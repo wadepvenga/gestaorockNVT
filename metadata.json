@@ -1,0 +1,5 @@
+{
+  "name": "Copy of Painel de Gestão Financeira - Rock Navegantes",
+  "description": "Um painel de gestão financeira para visualizar dados de uma planilha do Google Sheets, filtrados por ano e mês, com KPIs e tabela detalhada.",
+  "requestFramePermissions": []
+}
