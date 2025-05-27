@@ -22,8 +22,10 @@
   <script type="importmap">
 {
   "imports": {
-    "react/": "https://esm.sh/react@^19.1.0/",
     "react": "https://esm.sh/react@^19.1.0",
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react-dom": "https://esm.sh/react-dom@^19.1.0",
+    "react-dom/client": "https://esm.sh/react-dom@^19.1.0/client",
     "react-dom/": "https://esm.sh/react-dom@^19.1.0/"
   }
 }
@@ -31,7 +33,24 @@
 </head>
   <body class="bg-gray-100">
     <div id="root"></div>
-    <script type="module" src="./index.tsx"></script>
+    <!-- <script type="module" src="./index.tsx"></script> --> {/* Linha original comentada/removida */}
+    <script type="module">
+      import React from 'react';
+      import ReactDOM from 'react-dom/client';
+      import App from './App.tsx'; // Carrega App.tsx diretamente
+
+      const rootElement = document.getElementById('root');
+      if (!rootElement) {
+        throw new Error("Could not find root element to mount to");
+      }
+
+      const root = ReactDOM.createRoot(rootElement);
+      // Usa React.createElement para evitar JSX neste script inline
+      root.render(
+        React.createElement(React.StrictMode, null, 
+          React.createElement(App, null)
+        )
+      );
+    </script>
   </body>
-</html><link rel="stylesheet" href="index.css">
-<script src="index.tsx" type="module"></script>
+</html>
